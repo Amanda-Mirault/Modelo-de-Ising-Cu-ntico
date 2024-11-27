@@ -1,17 +1,21 @@
 import numpy as np
 
-#matricitas necesarias
-def pauliX():
+class Hamiltoniano:
+  def __init__(self, J, g, N):
+    self.J = J
+    self.g = g
+    self.N = N
+
+  def pauliX(self):
     return np.array([[0,1],[1,0]])
 
-def pauliZ():
-    return np.array([[1,0],[0,-1]])
+  def pauliZ(self):
+      return np.array([[1,0],[0,-1]])
 
-def identidad():
-    return np.array([[1,0],[0,1]])
+  def identidad(self):
+      return np.array([[1,0],[0,1]])
 
-#funcion para calcular producto tensorial
-def productoTensorial(matrizA, matrizB):
+  def productoTensorial(self, matrizA, matrizB):
     m = len(matrizA)
     n = len(matrizA[0])
     p = len(matrizB)
@@ -27,55 +31,51 @@ def productoTensorial(matrizA, matrizB):
 
     return result
 
-#ordenar productos tensoriales para x
-def ordenadorX(N, i, sigma, base):
-    result = base()
+  def ordenadorX(self, i):
+    result = self.identidad()
 
-    for k in range(1, N+1):
+    for k in range(1, self.N + 1):
         if k == 1:
             if k == i:
-                result = sigma()
+                result = self.pauliX()
             else:
-                result = base()
+                result = self.identidad()
         else:
             if k == i:
-                result = productoTensorial(result, sigma())
+                result = self.productoTensorial(result, self.pauliX())
             else:
-                result = productoTensorial(result, base())
+                result = self.productoTensorial(result, self.identidad())
     return result
 
-#ordenar productos tensoriales para z
-def ordenadorZ(N, i, sigma, base):
-    result = base()
+  def ordenadorZ(self, i):
+    result = self.identidad()
 
-    for k in range(1, N+1):
+    for k in range(1, self.N + 1):
         if k == 1:
             if k == i:
-                result = sigma()
+                result = self.pauliZ()
             else:
-                result = base()
+                result = self.identidad()
         elif k == i:
-            result = productoTensorial(result, sigma())
+            result = self.productoTensorial(result, self.pauliZ())
         elif k == i+1:
-            result = productoTensorial(result, sigma())
+            result = self.productoTensorial(result, self.pauliZ())
         else:
-            result = productoTensorial(result, base())
+            result = self.productoTensorial(result, self.identidad())
     return result
 
-#construir hamiltoniano
-def hamiltoniano(N, J, g, sigmaZ, sigmaX, base):
-    sumZ = np.zeros((2**N, 2**N))
-    for i in range(1,N):
-        sumZ += ordenadorZ(N, i, sigmaZ, base)
-    sumZ *= -J
+  def construirHamiltoniano(self):
+    sumZ = np.zeros((2**self.N, 2**self.N))
+    for i in range(1, self.N):
+        sumZ += self.ordenadorZ(i)
+    sumZ *= -self.J
 
-    sumX = np.zeros((2**N, 2**N))
-    for i in range(1, N+1):
-        sumX += ordenadorX(N, i, sigmaX, base)
-    sumX *= -g
+    sumX = np.zeros((2**self.N, 2**self.N))
+    for i in range(1, self.N + 1):
+        sumX += self.ordenadorX(i)
+    sumX *= -self.g
 
     return sumZ + sumX
 
-H = hamiltoniano(2, 1, 1, pauliZ, pauliX, identidad)
-
-print("Hamiltoniano: ", H)
+H = Hamiltoniano(1, 1, 2)
+print(H.construirHamiltoniano())
