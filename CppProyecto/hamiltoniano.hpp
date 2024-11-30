@@ -8,7 +8,7 @@ class Hamiltoniano {
 
 private:
     double J;
-    double g;
+    double G;
     int N;
     int dim; // Dimensión del sistema (2^N)
 
@@ -20,8 +20,7 @@ private:
     // Función para calcular el producto tensorial con índices lineales
     std::vector<std::complex<double>> productoTensorial(
         const std::vector<std::complex<double>>& A, int filaA, int colmA,
-        const std::vector<std::complex<double>>& B, int filaB, int colmB
-    );
+        const std::vector<std::complex<double>>& B, int filaB, int colmB);
 
     // Funciones para operadores X y Z con índices lineales
     std::vector<std::complex<double>> ordenadorX(int i);
@@ -29,10 +28,13 @@ private:
 
 public:
     // Constructor personalizado
-    Hamiltoniano(double J, double g, int N);
+    Hamiltoniano(double j, double g, int n);
 
     // Construye el Hamiltoniano completo
     std::vector<std::complex<double>> construirHamiltoniano();
+
+    //Imprime el hamiltoniano
+    void imprimirMatriz(const std::vector<std::complex<double>>& matriz, int filas, int columnas) const;
 };
 
 #endif

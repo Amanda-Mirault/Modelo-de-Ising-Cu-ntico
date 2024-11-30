@@ -5,10 +5,10 @@
 #include <iostream>
 
 //Constructor personalizado
-Hamiltoniano::Hamiltoniano(double J, double g, int N) {
-    J = J;
-    g = g;
-    N = N;
+Hamiltoniano::Hamiltoniano(double j, double g, int n) {
+    J = j;
+    G = g;
+    N = n;
     dim = 1 << N;
 }
 
@@ -26,8 +26,8 @@ std::vector<std::complex<double>> Hamiltoniano::identidad() {
 }
 
 //Producto tensorial
-std::vector<double> productoTensorial(const std::vector<double>& A, int filaA, int colmA, const std::vector<double>& B, int filaB, int colmB) {
-    std::vector<double> resultado((filaA * filaB) * (colmA * colmB), 0.0);
+std::vector<std::complex<double>> Hamiltoniano::productoTensorial(const std::vector<std::complex<double>>& A, int filaA, int colmA, const std::vector<std::complex<double>>& B, int filaB, int colmB) {
+    std::vector<std::complex<double>> resultado((filaA * filaB) * (colmA * colmB), 0.0);
 
     for (int i = 0; i < filaA; ++i) {
         for (int j = 0; j < colmA; ++j) {
@@ -52,7 +52,7 @@ std::vector<std::complex<double>> Hamiltoniano::ordenadorX(int i) {
         if (k == 1) {
             resultado = (k == i) ? pauliX() : identidad();
         } else {
-            resultado = productoTensorial(resultado, (k == i) ? pauliX() : identidad(), dimLocal, 2);
+            resultado = productoTensorial(resultado, dimLocal, dimLocal, (k == i) ? pauliX() : identidad(), 2, 2);
             dimLocal *= 2;
         }
     }
@@ -68,7 +68,7 @@ std::vector<std::complex<double>> Hamiltoniano::ordenadorZ(int i) {
         if (k == 1) {
             resultado = (k == i) ? pauliZ() : identidad();
         } else {
-            resultado = productoTensorial(resultado, (k == i || k == i + 1) ? pauliZ() : identidad(), dimLocal, 2);
+            resultado = productoTensorial(resultado, dimLocal, dimLocal, (k == i || k == i + 1) ? pauliZ() : identidad(), 2, 2);
             dimLocal *= 2;
         }
     }
@@ -82,28 +82,37 @@ std::vector<std::complex<double>> Hamiltoniano::construirHamiltoniano() {
 
     for (int i = 1; i < N; i++) {
         auto operadorZ = ordenadorZ(i);
-        for (int r = 0; r < dim; r++) {
+        for (int f = 0; f < dim; f++) {
             for (int c = 0; c < dim; c++) {
-                sumZ[r * dim + c] += -J * operadorZ[r * dim + c];
+                sumZ[f * dim + c] += -J * operadorZ[f * dim + c];
             }
         }
     }
 
     for (int i = 1; i <= N; i++) {
         auto operadorX = ordenadorX(i);
-        for (int r = 0; r < dim; r++) {
+        for (int f = 0; f < dim; f++) {
             for (int c = 0; c < dim; c++) {
-                sumX[r * dim + c] += -g * operadorX[r * dim + c];
+                sumX[f * dim + c] += -G * operadorX[f * dim + c];
             }
         }
     }
 
     // Sumar ambos términos
-    vector<complex<double>> hamiltoniano(dim * dim, 0);
-    for (int r = 0; r < dim; r++) {
+    std::vector<std::complex<double>> hamiltoniano(dim * dim, 0);
+    for (int f = 0; f < dim; f++) {
         for (int c = 0; c < dim; c++) {
-            hamiltoniano[r * dim + c] = sumZ[r * dim + c] + sumX[r * dim + c];
+            hamiltoniano[f * dim + c] = sumZ[f * dim + c] + sumX[f * dim + c];
         }
     }
     return hamiltoniano;
+}
+
+void Hamiltoniano::imprimirMatriz(const std::vector<std::complex<double>>& matriz, int filas, int columnas) const {
+	for (int f = 0; f < filas; f++) {
+       	  for (int c = 0; c < columnas; c++) {
+            std::cout << matriz[f * columnas + c] << " "; 
+        }
+        std::cout << std::endl;
+    }
 }
