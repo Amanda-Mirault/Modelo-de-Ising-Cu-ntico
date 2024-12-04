@@ -35,10 +35,11 @@ std::vector<std::complex<double>> derivadaVectorPsi(
     const std::vector<std::complex<double>>& state,
     const std::vector<std::complex<double>>& oper, int num_procs) {
     std::vector<std::complex<double>> result(state.size(), 0.0);
-
+    
+    
     #pragma omp parallel
     {//fork
-    num_procs = omp_get_num_threads();
+   
     #pragma omp for
     for (size_t i = 0; i < state.size(); ++i) {
         for (size_t j = 0; j < state.size(); ++j) {
@@ -88,6 +89,10 @@ std::vector<std::complex<double>> rk4(
 }
 
 int main() {
+    int N = 10; 
+    int TIMESTEPS = 1000;
+    double T_MAX = 10.0;
+    double h = T_MAX / TIMESTEPS;
     Hamiltoniano hamiltoniano(1.0, 1.0, N);
     auto H = hamiltoniano.construirHamiltoniano();
     int num_procs; //se declara una variable compartida para que el usuario introduzca la cantidad de hilos
@@ -97,6 +102,10 @@ int main() {
     auto vecRK4 = vectorPsiInit(N);
     std::vector<double> vectorPsiRK4(TIMESTEPS, 0.0);
 
+    #pragma omp parallel
+    {
+    num_procs = omp_get_num_threads();
+    }
     for (int i = 0; i < TIMESTEPS; ++i) {
         vectorPsiRK4[i] = std::real(vecRK4[0]);
         vecRK4 = rk4(vecRK4, H, h, num_procs, derivadaVectorPsi);
@@ -106,7 +115,7 @@ int main() {
     std::cout << "Duración RK4: " << (end_rk4 - start_rk4) << " s" << std::endl;
 	std::cout << "Entrada 1 " << vectorPsiRK4[0] << std::endl;
     std::cout << "Entrada 2 " << vectorPsiRK4[1] << std::endl;
-	std::cout << "Entrada 3 " << vectorPsiRK4[2] << std::endl;
+	std::cout << "Entrada 3 " << vectorPsiRK4[279] << std::endl;
 	std::cout << "Number of threads: " << num_procs << std::endl;
 
 	return 0;
