@@ -18,7 +18,7 @@ class Hamiltoniano:
         ordenadorZ(i): Implementa el orden correcto de los productos tensoriales de las matrices de Pauli Z y la identidad.
         construirHamiltoniano(): Construye el hamiltoniano final.
     """
-    def __(self, J, g, N):
+    def __init__(self, J, g, N):
         """
         Inicializa un objeto de tipo Hamiltoniano.
 
