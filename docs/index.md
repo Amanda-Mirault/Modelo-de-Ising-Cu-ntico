@@ -16,7 +16,7 @@ cuya solución formal está dada por
 
 Es decir, la solución involucra resolver de manera numérica la ecuación diferencial o evaluar de alguna forma la exponencial de la matriz. La idea del proyecto es evaluar la dinámica del modelo de Ising empezando de algún estado inicial.
 
-\begin{equation} \hat{H} = -J \sum_{i=1}^N \hat{\sigma}i ^z \hat{\sigma}{i+1} ^z -g \sum_{i=1}^N \hat{\sigma}_i ^x, \label{Hamiltoniano} \end{equation}
+\begin{equation} \hat{H} = -J \sum_{i=1}^N \hat{\sigma}_i ^z \hat{\sigma}_{i+1} ^z -g \sum_{i=1}^N \hat{\sigma}_i ^x, \label{Hamiltoniano} \end{equation}
 
 donde $J$ es una escala energética que determina la interacción ferromagnética, $g$ el parámetro energético del campo transversal y $\sigma^{\alpha}_{i}$ ($\alpha = x, y, z$) son las matrices de Pauli para el spin $i$.
 ### Milestones:

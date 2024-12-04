@@ -237,9 +237,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#Pysing.hamiltonianoDocu.Hamiltoniano.__" class="md-nav__link">
+  <a href="#Pysing.hamiltonianoDocu.Hamiltoniano.__init__" class="md-nav__link">
     <span class="md-ellipsis">
-      __
+      __init__
     </span>
   </a>
   
@@ -465,9 +465,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#Pysing.hamiltonianoDocu.Hamiltoniano.__" class="md-nav__link">
+  <a href="#Pysing.hamiltonianoDocu.Hamiltoniano.__init__" class="md-nav__link">
     <span class="md-ellipsis">
-      __
+      __init__
     </span>
   </a>
   
@@ -878,7 +878,8 @@
 <span class="normal">168</span>
 <span class="normal">169</span>
 <span class="normal">170</span>
-<span class="normal">171</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">Hamiltoniano</span><span class="p">:</span>
+<span class="normal">171</span>
+<span class="normal">172</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">Hamiltoniano</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generador de una matriz Hamiltoniana a partir de las matrices de Pauli X y Z.</span>
 
@@ -896,7 +897,7 @@
 <span class="sd">        ordenadorZ(i): Implementa el orden correcto de los productos tensoriales de las matrices de Pauli Z y la identidad.</span>
 <span class="sd">        construirHamiltoniano(): Construye el hamiltoniano final.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">J</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">J</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Inicializa un objeto de tipo Hamiltoniano.</span>
 
@@ -939,6 +940,7 @@
     <span class="k">def</span> <span class="nf">productoTensorial</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">matrizA</span><span class="p">,</span> <span class="n">matrizB</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Realiza el producto tensorial entre la matriz A y la matriz B.</span>
+
 <span class="sd">        Example:</span>
 <span class="sd">            &gt;&gt;&gt; import numpy as np</span>
 <span class="sd">            &gt;&gt;&gt; productoTensorial(np.array([[1, 2], [3, 4]]), np.array([[0, 5], [6, 7]]))</span>
@@ -1065,8 +1067,8 @@
 <div class="doc doc-object doc-function">
 
 
-<h3 id="Pysing.hamiltonianoDocu.Hamiltoniano.__" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">__</span><span class="p">(</span><span class="n">J</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span></code>
+<h3 id="Pysing.hamiltonianoDocu.Hamiltoniano.__init__" class="doc doc-heading">
+            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">J</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span></code>
 
 </h3>
 
@@ -1145,7 +1147,7 @@
 <span class="normal">29</span>
 <span class="normal">30</span>
 <span class="normal">31</span>
-<span class="normal">32</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">J</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+<span class="normal">32</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">J</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Inicializa un objeto de tipo Hamiltoniano.</span>
 
@@ -1217,8 +1219,7 @@ Ham.construirHamiltoniano()
 
             <details class="quote">
               <summary>Source code in <code>Pysing/hamiltonianoDocu.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">146</span>
-<span class="normal">147</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">147</span>
 <span class="normal">148</span>
 <span class="normal">149</span>
 <span class="normal">150</span>
@@ -1242,7 +1243,8 @@ Ham.construirHamiltoniano()
 <span class="normal">168</span>
 <span class="normal">169</span>
 <span class="normal">170</span>
-<span class="normal">171</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">construirHamiltoniano</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">171</span>
+<span class="normal">172</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">construirHamiltoniano</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Construye el hamiltoniano para el modelo de Ising.</span>
 
@@ -1400,8 +1402,7 @@ Ham.construirHamiltoniano()
 
             <details class="quote">
               <summary>Source code in <code>Pysing/hamiltonianoDocu.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 94</span>
-<span class="normal"> 95</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 95</span>
 <span class="normal"> 96</span>
 <span class="normal"> 97</span>
 <span class="normal"> 98</span>
@@ -1423,7 +1424,8 @@ Ham.construirHamiltoniano()
 <span class="normal">114</span>
 <span class="normal">115</span>
 <span class="normal">116</span>
-<span class="normal">117</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">ordenadorX</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+<span class="normal">117</span>
+<span class="normal">118</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">ordenadorX</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Implementa el orden correcto de los productos tensoriales de las matrices de Pauli X y la identidad.</span>
 
@@ -1520,8 +1522,7 @@ Ham.construirHamiltoniano()
 
             <details class="quote">
               <summary>Source code in <code>Pysing/hamiltonianoDocu.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">119</span>
-<span class="normal">120</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">120</span>
 <span class="normal">121</span>
 <span class="normal">122</span>
 <span class="normal">123</span>
@@ -1545,7 +1546,8 @@ Ham.construirHamiltoniano()
 <span class="normal">141</span>
 <span class="normal">142</span>
 <span class="normal">143</span>
-<span class="normal">144</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">ordenadorZ</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+<span class="normal">144</span>
+<span class="normal">145</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">ordenadorZ</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Implementa el orden correcto de los productos tensoriales de las matrices de Pauli Z y la identidad.</span>
 
@@ -1706,15 +1708,24 @@ Ham.construirHamiltoniano()
 
     <div class="doc doc-contents ">
 
-        <p>Realiza el producto tensorial entre la matriz A y la matriz B.
-Example:
-    &gt;&gt;&gt; import numpy as np
-    &gt;&gt;&gt; productoTensorial(np.array([[1, 2], [3, 4]]), np.array([[0, 5], [6, 7]]))
-    [[ 0.  5.  0. 10.]
-     [ 6.  7. 12. 14.]
-     [ 0. 15.  0. 20.]
-     [18. 21. 24. 28.]]</p>
+        <p>Realiza el producto tensorial entre la matriz A y la matriz B.</p>
 
+
+<details class="example" open>
+  <summary>Example</summary>
+  <blockquote>
+<blockquote>
+<blockquote>
+<p>import numpy as np
+productoTensorial(np.array([[1, 2], [3, 4]]), np.array([[0, 5], [6, 7]]))
+[[ 0.  5.  0. 10.]
+ [ 6.  7. 12. 14.]
+ [ 0. 15.  0. 20.]
+ [18. 21. 24. 28.]]</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</details>
 
 <p><span class="doc-section-title">Parameters:</span></p>
     <table>
@@ -1814,9 +1825,11 @@ Example:
 <span class="normal">89</span>
 <span class="normal">90</span>
 <span class="normal">91</span>
-<span class="normal">92</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">productoTensorial</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">matrizA</span><span class="p">,</span> <span class="n">matrizB</span><span class="p">):</span>
+<span class="normal">92</span>
+<span class="normal">93</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">productoTensorial</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">matrizA</span><span class="p">,</span> <span class="n">matrizB</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Realiza el producto tensorial entre la matriz A y la matriz B.</span>
+
 <span class="sd">    Example:</span>
 <span class="sd">        &gt;&gt;&gt; import numpy as np</span>
 <span class="sd">        &gt;&gt;&gt; productoTensorial(np.array([[1, 2], [3, 4]]), np.array([[0, 5], [6, 7]]))</span>
