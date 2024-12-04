@@ -7,11 +7,6 @@
 #include <sys/time.h>
 #include <omp.h>
 
-// Definición de constantes
-const int N = 10; // Número de qubits
-const int TIMESTEPS = 1000;
-const double T_MAX = 10.0;
-const double h = T_MAX / TIMESTEPS;
 using namespace std::complex_literals;
 
 // Función para obtener el tiempo actual en segundos

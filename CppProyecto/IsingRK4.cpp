@@ -6,12 +6,6 @@
 #include <numeric>
 #include <sys/time.h>
 
-
-// Definición de constantes
-//const int N = 6; // Número de qubits
-//const int TIMESTEPS = 1000;
-//const double T_MAX = 10.0;
-//const double h = T_MAX / TIMESTEPS;
 using namespace std::complex_literals;
 
 // Función para obtener el tiempo actual en segundos
