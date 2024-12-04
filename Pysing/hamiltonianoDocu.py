@@ -4,11 +4,12 @@ class Hamiltoniano:
     """
     Generador de una matriz Hamiltoniana a partir de las matrices de Pauli X y Z.
 
-    Atributos:
+    Attributes:
         J (float): Escala energética que determina la interacción ferromagnética. 
         g (float): Parámetro energéticos del campo transversal.
         N (int): Determina la cantidad de spines.
-    Métodos:
+
+    Methods:
         pauliX(): Matriz X de Pauli.
         pauliZ(): Matriz Z de Pauli.
         identidad(): Matriz identidad.
@@ -70,7 +71,7 @@ class Hamiltoniano:
 
         Args:
             matrizA (np.array): Matriz A
-            matrizB(np.array): Matriz B
+            matrizB (np.array): Matriz B
 
         Returns:
             (np.array): Retorna el producto tensorial entre la matriz A y B.
@@ -168,37 +169,3 @@ class Hamiltoniano:
         sumX *= -self.g
 
         return sumZ + sumX
-
-def derivadaVectorPsi(state, oper):
-    """
-    Genera la derivada del vector Psi dada en la ecuación diferencial.
-
-    Example:
-
-    Args:
-        state(np.array): Matriz que representa el estado actual.
-        oper(np.array): Matriz que representa
-    """
-    return -1.0j * np.matmul(oper, state)
-
-def rk4(func, oper, state, h):
-    k_1 = h*func(oper,state)
-    k_2 = h*func(oper,state+((k_1)/2))
-    k_3 = h*func(oper,state+((k_2)/2))
-    k_4 = h*func(oper,state+k_3)
-    return state + (k_1 + 2*k_2 + 2*k_3 + k_4)*(1/6)
-
-def diagonalizacion(t, t_0, vec, eigVals, eigVecs):
-    # base diagonal
-    eigVals = -1.0j * eigVals * (t - t_0)
-    expVals = np.exp(eigVals)
-    expD = np.diag(expVals)
-
-    psi_d = np.dot(eigVecs.T, vec)
-    psi_t_d = np.dot(expD, psi_d)
-
-    #base original
-    psi_t = np.dot(eigVecs, psi_t_d)
-
-    return psi_t
-

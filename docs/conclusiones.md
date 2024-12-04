@@ -1,0 +1,3 @@
+Es posible identificar que si bien para N pequeños RK4 resultó ser un poco más eficiente (hasta un orden de magnitud menor), en general, el método de diagonalización es más rápido al implementar la solución en Python. Con esto, se concluye que el método de diagonalización es mejor para implementar la solución directa. 
+
+Por otro lado, si se compara los resultados entre C++ y Python al utilizar el método de Runge-Kutta de orden 4 para la solución numérica, se determina que la implementación en Python es más eficiente. Es cierto que para N pequeños (menores a 6), el tiempo entre ambos no varía mucho, pero al aumentar se nota como el tiempo de la evolución en C++ es mayor.  
