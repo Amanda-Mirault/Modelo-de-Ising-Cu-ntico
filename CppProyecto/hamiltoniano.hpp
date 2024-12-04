@@ -12,17 +12,17 @@ private:
     int N;
     int dim; // Dimensión del sistema (2^N)
 
-    // Funciones privadas para obtener matrices base
+    // Funciones para obtener las matrices base
     std::vector<std::complex<double>> pauliX();
     std::vector<std::complex<double>> pauliZ();
     std::vector<std::complex<double>> identidad();
 
-    // Función para calcular el producto tensorial con índices lineales
+    // Función para calcular el producto tensorial
     std::vector<std::complex<double>> productoTensorial(
         const std::vector<std::complex<double>>& A, int filaA, int colmA,
         const std::vector<std::complex<double>>& B, int filaB, int colmB);
 
-    // Funciones para operadores X y Z con índices lineales
+    // Funciones para ordenadores X y Z
     std::vector<std::complex<double>> ordenadorX(int i);
     std::vector<std::complex<double>> ordenadorZ(int i);
 

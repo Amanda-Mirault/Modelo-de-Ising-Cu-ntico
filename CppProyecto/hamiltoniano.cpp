@@ -12,7 +12,7 @@ Hamiltoniano::Hamiltoniano(double j, double g, int n) {
     dim = 1 << N;
 }
 
-// Matrices de Pauli y matriz identidad
+// Matrices de Pauli y matriz identidad en su forma lineal
 std::vector<std::complex<double>> Hamiltoniano::pauliX() {
     return {0, 1, 1, 0};
 }
@@ -98,7 +98,7 @@ std::vector<std::complex<double>> Hamiltoniano::construirHamiltoniano() {
         }
     }
 
-    // Sumar ambos términos
+    // Realiza la suma de las sumatorias de X y Z
     std::vector<std::complex<double>> hamiltoniano(dim * dim, 0);
     for (int f = 0; f < dim; f++) {
         for (int c = 0; c < dim; c++) {
@@ -107,7 +107,7 @@ std::vector<std::complex<double>> Hamiltoniano::construirHamiltoniano() {
     }
     return hamiltoniano;
 }
-
+//Imprime el hamiltoniano en la forma bidimensional
 void Hamiltoniano::imprimirMatriz(const std::vector<std::complex<double>>& matriz, int filas, int columnas) const {
 	for (int f = 0; f < filas; f++) {
        	  for (int c = 0; c < columnas; c++) {
