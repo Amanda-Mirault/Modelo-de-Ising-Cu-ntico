@@ -61,6 +61,7 @@ class Hamiltoniano:
     def productoTensorial(self, matrizA, matrizB):
         """
         Realiza el producto tensorial entre la matriz A y la matriz B.
+
         Example:
             >>> import numpy as np
             >>> productoTensorial(np.array([[1, 2], [3, 4]]), np.array([[0, 5], [6, 7]]))
